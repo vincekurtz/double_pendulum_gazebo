@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Revolute-Revolute Manipulator -->
-<robot name="rrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="double_pendulum" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Constants for robot dimensions -->
   <xacro:property name="PI" value="3.1415926535897931"/>
@@ -13,9 +13,9 @@
   <xacro:property name="axel_offset" value="0.05" /> <!-- Space btw top of beam and the each joint -->
 
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-  <xacro:include filename="$(find rrbot_description)/urdf/rrbot.gazebo" />
+  <xacro:include filename="$(find double_pendulum_description)/urdf/double_pendulum.gazebo" />
   <!-- Import Rviz colors -->
-  <xacro:include filename="$(find rrbot_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find double_pendulum_description)/urdf/materials.xacro" />
 
   <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world"/>
@@ -141,7 +141,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://rrbot_description/meshes/hokuyo.dae"/>
+        <mesh filename="package://double_pendulum_description/meshes/hokuyo.dae"/>
       </geometry>
     </visual>
 

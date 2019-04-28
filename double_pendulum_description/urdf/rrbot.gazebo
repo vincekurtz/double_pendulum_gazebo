@@ -4,7 +4,7 @@
   <!-- ros_control plugin -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/rrbot</robotNamespace>
+      <robotNamespace>/double_pendulum</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
@@ -66,7 +66,7 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-        <topicName>/rrbot/laser/scan</topicName>
+        <topicName>/double_pendulum/laser/scan</topicName>
         <frameName>hokuyo_link</frameName>
       </plugin>
     </sensor>
@@ -99,7 +99,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>rrbot/camera1</cameraName>
+        <cameraName>double_pendulum/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>camera_link_optical</frameName>

@@ -1,7 +1,7 @@
 <package>
-  <name>rrbot_gazebo</name>
+  <name>double_pendulum_gazebo</name>
   <version>0.1.0</version>
-  <description>rrbot_gazebo</description>
+  <description>double_pendulum_gazebo</description>
   <maintainer email="davetcoleman@gmail.com">Dave Coleman</maintainer>
 
   <license>BSD</license>
@@ -17,8 +17,8 @@
   <run_depend>gazebo_plugins</run_depend>
   <run_depend>gazebo_ros</run_depend>
   <run_depend>gazebo_ros_control</run_depend>
-  <run_depend>rrbot_control</run_depend>
-  <run_depend>rrbot_description</run_depend>
+  <run_depend>double_pendulum_control</run_depend>
+  <run_depend>double_pendulum_description</run_depend>
   <run_depend>xacro</run_depend>
 
   <export>

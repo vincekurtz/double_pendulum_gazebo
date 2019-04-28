@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rrbot_control)
+project(double_pendulum_control)
 
 find_package(catkin REQUIRED)
 
