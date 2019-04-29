@@ -10,7 +10,7 @@
   <xacro:property name="height2" value="1" /> <!-- Link 2 -->
   <xacro:property name="height3" value="1" /> <!-- Link 3 -->
   
-  <xacro:property name="foot_height" value="0.1" /> <!-- Foot dimensions -->
+  <xacro:property name="foot_height" value="0.05" /> <!-- Foot dimensions -->
   <xacro:property name="foot_width" value="0.5" /> 
 
   <xacro:property name="axel_offset" value="0.05" /> <!-- How far keep joints away from each other -->
@@ -58,7 +58,7 @@
   <joint name="foot_joint" type="fixed">
     <parent link="foot"/>
     <child link="link1"/>
-    <origin xyz="0 0 ${foot_height}" rpy="0 0 0"/>
+    <origin xyz="0 -${width} ${foot_height}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
   </joint>
   
