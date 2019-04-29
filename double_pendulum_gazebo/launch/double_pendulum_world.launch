@@ -26,6 +26,6 @@
     args="-urdf -model double_pendulum -param robot_description"/>
 
   <!-- ros_control double_pendulum launch file -->
-  <!--include file="$(find double_pendulum_control)/launch/double_pendulum_control.launch" /-->
+  <!--<include file="$(find double_pendulum_control)/launch/double_pendulum_control.launch" />-->
 
 </launch>
