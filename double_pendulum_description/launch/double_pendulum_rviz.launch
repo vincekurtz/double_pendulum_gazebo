@@ -10,6 +10,9 @@
   <!-- Combine joint values -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
+  <!-- Publish transform between foot and world frame -->
+  <node pkg="tf" type="static_transform_publisher" name="world_transfoorm" args="0 0 0 0 0 0  /foot /world  100"/>
+
   <!-- Show in Rviz   -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find double_pendulum_description)/launch/double_pendulum.rviz"/>
 
