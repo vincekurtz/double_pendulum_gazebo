@@ -4,11 +4,11 @@
 
   <!-- Constants for robot dimensions -->
   <xacro:property name="PI" value="3.1415926535897931"/>
-  <xacro:property name="mass" value="1" /> <!-- arbitrary value for mass -->
+  <xacro:property name="mass" value="1.0" /> <!-- arbitrary value for mass -->
   <xacro:property name="width" value="0.1" /> <!-- Square dimensions (widthxwidth) of beams -->
   <xacro:property name="height1" value="0.2" /> <!-- Link 1 -->
-  <xacro:property name="height2" value="1" /> <!-- Link 2 -->
-  <xacro:property name="height3" value="1" /> <!-- Link 3 -->
+  <xacro:property name="height2" value="1.1" /> <!-- Link 2 -->
+  <xacro:property name="height3" value="1.1" /> <!-- Link 3 -->
   
   <xacro:property name="foot_height" value="0.05" /> <!-- Foot dimensions -->
   <xacro:property name="foot_width" value="0.5" /> 
@@ -21,12 +21,12 @@
   <xacro:include filename="$(find double_pendulum_description)/urdf/materials.xacro" />
 
   <!-- Used for fixing robot foot to the world -->
-  <!--<link name="world"/>
+  <link name="world"/>
 
   <joint name="fixed" type="fixed">
     <parent link="world"/>
     <child link="foot"/>
-  </joint>-->
+  </joint>
 
   <!-- Foot Link-->
   <link name="foot">
@@ -48,7 +48,7 @@
     <inertial>
       <origin xyz="0 0 ${foot_height/2}" rpy="0 0 0"/>
       <mass value="${mass}"/>
-      <inertia
+    <inertia
         ixx="${mass / 12.0 * (foot_width*foot_width + foot_height*foot_height)}" ixy="0.0" ixz="0.0"
         iyy="${mass / 12.0 * (foot_height*foot_height + foot_width*foot_width)}" iyz="0.0"
         izz="${mass / 12.0 * (foot_width*foot_width + foot_width*foot_width)}"/>
@@ -82,7 +82,7 @@
     <inertial>
       <origin xyz="0 0 ${height1/2}" rpy="0 0 0"/>
       <mass value="${mass}"/>
-      <inertia
+    <inertia
         ixx="${mass / 12.0 * (width*width + height1*height1)}" ixy="0.0" ixz="0.0"
         iyy="${mass / 12.0 * (height1*height1 + width*width)}" iyz="0.0"
         izz="${mass / 12.0 * (width*width + width*width)}"/>
@@ -94,7 +94,7 @@
     <child link="link2"/>
     <origin xyz="0 ${width} ${height1 - axel_offset}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0.1"/>
+    <dynamics damping="0.5"/>
   </joint>
 
   <!-- Middle Link -->
@@ -102,7 +102,7 @@
     <collision>
       <origin xyz="0 0 ${height2/2 - axel_offset}" rpy="0 0 0"/>
       <geometry>
-        <box size="${width} ${width} ${height2}"/>
+        <box size="${width} ${width} ${height2+axel_offset}"/>
       </geometry>
     </collision>
 
@@ -117,10 +117,11 @@
     <inertial>
       <origin xyz="0 0 ${height2/2 - axel_offset}" rpy="0 0 0"/>
       <mass value="${mass}"/>
+      <!-- inertias copied from matlab model-->
       <inertia
-        ixx="${mass / 12.0 * (width*width + height2*height2)}" ixy="0.0" ixz="0.0"
-        iyy="${mass / 12.0 * (height2*height2 + width*width)}" iyz="0.0"
-        izz="${mass / 12.0 * (width*width + width*width)}"/>
+        ixx="0.3345833333333" ixy="0.0" ixz="0.0"
+        iyy="0.3345833333333" iyz="0.0"
+        izz="0.0025"/>
     </inertial>
   </link>
 
@@ -129,7 +130,7 @@
     <child link="link3"/>
     <origin xyz="0 ${width} ${height2 - axel_offset*2}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0.1"/>
+    <dynamics damping="0.5"/>
   </joint>
 
   <!-- Top Link -->
@@ -153,9 +154,9 @@
       <origin xyz="0 0 ${height3/2 - axel_offset}" rpy="0 0 0"/>
       <mass value="${mass}"/>
       <inertia
-        ixx="${mass / 12.0 * (width*width + height3*height3)}" ixy="0.0" ixz="0.0"
-        iyy="${mass / 12.0 * (height3*height3 + width*width)}" iyz="0.0"
-        izz="${mass / 12.0 * (width*width + width*width)}"/>
+        ixx="0.3345833333333" ixy="0.0" ixz="0.0"
+        iyy="0.3345833333333" iyz="0.0"
+        izz="0.0025"/>
     </inertial>
   </link>
 
