@@ -23,7 +23,7 @@
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-      args="-urdf -model double_pendulum -param robot_description -J joint1 0.8 -J joint2 -0.4"/>  <!-- set joint1 and joint2 angles in radians -->
+      args="-urdf -model double_pendulum -param robot_description -J joint1 0.35 -J joint2 -0.55"/>  <!-- set joint1 and joint2 angles in radians -->
 
   <!-- ros_control double_pendulum launch file -->
   <include file="$(find double_pendulum_control)/launch/double_pendulum_control.launch" />

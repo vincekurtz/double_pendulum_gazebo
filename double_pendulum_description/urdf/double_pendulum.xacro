@@ -11,7 +11,9 @@
   <xacro:property name="height3" value="1.1" /> <!-- Link 3 -->
   
   <xacro:property name="foot_height" value="0.05" /> <!-- Foot dimensions -->
-  <xacro:property name="foot_width" value="0.5" /> 
+  <xacro:property name="foot_width" value="1.0" /> 
+  <xacro:property name="foot_mass" value="0.2" /> <!-- negligible mass for the foot -->
+
 
   <xacro:property name="axel_offset" value="0.05" /> <!-- How far keep joints away from each other -->
 
@@ -21,12 +23,13 @@
   <xacro:include filename="$(find double_pendulum_description)/urdf/materials.xacro" />
 
   <!-- Used for fixing robot foot to the world -->
+  <!--
   <link name="world"/>
 
   <joint name="fixed" type="fixed">
     <parent link="world"/>
     <child link="foot"/>
-  </joint>
+  </joint>-->
 
   <!-- Foot Link-->
   <link name="foot">
@@ -47,11 +50,11 @@
 
     <inertial>
       <origin xyz="0 0 ${foot_height/2}" rpy="0 0 0"/>
-      <mass value="${mass}"/>
+      <mass value="${foot_mass}"/>
     <inertia
-        ixx="${mass / 12.0 * (foot_width*foot_width + foot_height*foot_height)}" ixy="0.0" ixz="0.0"
-        iyy="${mass / 12.0 * (foot_height*foot_height + foot_width*foot_width)}" iyz="0.0"
-        izz="${mass / 12.0 * (foot_width*foot_width + foot_width*foot_width)}"/>
+        ixx="${foot_mass / 12.0 * (foot_width*foot_width + foot_height*foot_height)}" ixy="0.0" ixz="0.0"
+        iyy="${foot_mass / 12.0 * (foot_height*foot_height + foot_width*foot_width)}" iyz="0.0"
+        izz="${foot_mass / 12.0 * (foot_width*foot_width + foot_width*foot_width)}"/>
     </inertial>
   </link>
 
@@ -81,11 +84,11 @@
 
     <inertial>
       <origin xyz="0 0 ${height1/2}" rpy="0 0 0"/>
-      <mass value="${mass}"/>
+      <mass value="${foot_mass}"/>
     <inertia
-        ixx="${mass / 12.0 * (width*width + height1*height1)}" ixy="0.0" ixz="0.0"
-        iyy="${mass / 12.0 * (height1*height1 + width*width)}" iyz="0.0"
-        izz="${mass / 12.0 * (width*width + width*width)}"/>
+        ixx="${foot_mass / 12.0 * (width*width + height1*height1)}" ixy="0.0" ixz="0.0"
+        iyy="${foot_mass / 12.0 * (height1*height1 + width*width)}" iyz="0.0"
+        izz="${foot_mass / 12.0 * (width*width + width*width)}"/>
     </inertial>
   </link>
 
